@@ -89,12 +89,16 @@ module Bindings.SVM where
 #ccall svm_predict_probability , Ptr <svm_model> -> Ptr <svm_node> -> Ptr CDouble -> IO CDouble
 
 -- destroying
-#ccall svm_destroy_model , Ptr <svm_model> -> IO ()
+-- #ccall svm_destroy_model , Ptr <svm_model> -> IO ()
 #ccall svm_destroy_param , Ptr <svm_parameter> -> IO ()
+#ccall svm_free_and_destroy_model, Ptr (Ptr <svm_model>) -> IO ()
 
 -- checking
 #ccall svm_check_parameter , Ptr <svm_problem> -> Ptr <svm_parameter> -> IO CString
 #ccall svm_check_probability_model , Ptr <svm_model> -> IO CInt
 
 -- printing
-#ccall svm_print_string , FunPtr (CString -> IO ())
+-- #ccall svm_print_string , FunPtr (CString -> IO ())
+#ccall svm_set_print_string_function , FunPtr (CString -> IO ()) -> IO CString
+
+

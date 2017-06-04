@@ -32,4 +32,4 @@ library
   extra-libraries:
     svm
   pkgconfig-depends:
-    libsvm >= 2.8
+    --libsvm >= 2.8
