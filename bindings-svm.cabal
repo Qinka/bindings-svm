@@ -17,18 +17,12 @@ build-type:          Simple
 cabal-version:       >= 1.24
 
 library
-  hs-source-dirs:
-    src
-  exposed-modules:
-    Bindings.SVM
-  build-depends:
-    base         >= 3   && < 5,
-    bindings-DSL >= 1.0 && < 1.1
-  ghc-options:
-    -Wall
-  includes:
-    svm.h
-  extra-libraries:
-    svm
-  -- pkgconfig-depends:
-    --libsvm >= 2.8
+  hs-source-dirs:   src
+  exposed-modules:  Bindings.SVM
+  build-depends:    base         >= 3   && < 5
+                  , bindings-DSL >= 1.0 && < 1.1
+  include-dirs:     libsvm
+  install-includes: libsvm/svm.h
+  c-sources:        libsvm/svm.cpp
+  includes:         libsvm/svm.h
+  extra-libraries:  stdc++
